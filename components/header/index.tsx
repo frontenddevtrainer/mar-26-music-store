@@ -1,11 +1,18 @@
+"use client"
+import Link from "next/link";
+import { useCart } from "../context/cart";
+
 const Header = () => {
+
+    const { items } = useCart()
+
   return (
     <header className="bg-gray-800 text-white p-4 flex justify-between items-center">
       <h1 className="text-2xl">Music Store</h1>
       <div className="flex items-center">
-        <a href="#" className="mr-6">
-          <span className="material-icons"> shopping_cart </span>
-        </a>
+        <Link href="/cart" className="mr-6">
+          <span className="material-icons"> shopping_cart ({items.length})</span>
+        </Link>
 
         <div className="relative inline-block text-left">
           <button type="button" className="inline-flex items-center">
