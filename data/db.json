@@ -1,34 +1,36 @@
 {
-  "top-albums": [
+  "albums": [
     {
       "id": 1,
       "name": "Bollywood Top 2024",
       "songs": [],
       "price": 12.99,
-      "singers": []
+      "singers": [],
+      "tags": "top"
     },
     {
       "id": 2,
       "name": "Bollywood Top 2023",
       "songs": [],
       "price": 12.99,
-      "singers": []
-    }
-  ],
-  "latest-albums": [
+      "singers": [],
+      "tags": "top"
+    },
     {
       "id": 3,
       "name": "Bollywood Top 2022",
       "songs": [],
       "price": 12.99,
-      "singers": []
+      "singers": [],
+      "tags": "latest"
     },
     {
       "id": 4,
       "name": "Bollywood Top 2021",
       "songs": [],
       "price": 12.99,
-      "singers": []
+      "singers": [],
+      "tags": "latest"
     }
   ]
 }

@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "dev:api": "json-server --watch ./data/db.json --port 4000"
+    "dev:api": "json-server --watch ./data/db.json --port 4000 -r ./data/routes.json"
   },
   "dependencies": {
     "json-server": "^0.17.4",

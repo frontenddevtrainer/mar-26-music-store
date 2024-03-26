@@ -1,6 +1,7 @@
 "use client";
 
 import { IAlbum } from "@/lib/interface/album";
+import Link from "next/link";
 
 export interface AlbumListingProps {
   title: string;
@@ -14,9 +15,9 @@ const AlbumListing = ({ title, albums }: AlbumListingProps) => {
       <div className="grid grid-cols-5 gap-4">
         {!albums || (albums?.length === 0 && <div>No albums found.</div>)}
 
-        {albums?.map(() => {
+        {albums?.map((album) => {
           return (
-            <div className="bg-gray-800 p-4 rounded relative">
+            <div key={album.id} className="bg-gray-800 p-4 rounded relative">
               <div className="relative">
                 <img
                   src="https://via.placeholder.com/150"
@@ -32,7 +33,7 @@ const AlbumListing = ({ title, albums }: AlbumListingProps) => {
               </div>
 
               <div className="text-left">
-                <h3 className="text-md font-bold mb-1">Album Name</h3>
+                <h3 className="text-md font-bold mb-1"><Link href={`/albums/${album.id}`}>{album.name}</Link></h3>
                 <p className="text-sm mb-2 text-gray-400">By Singer</p>
                 <p className="text-sm mb-2 text-green-200">$9.99</p>
 
