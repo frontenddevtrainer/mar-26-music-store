@@ -1,0 +1,34 @@
+{
+  "top-albums": [
+    {
+      "id": 1,
+      "name": "Bollywood Top 2024",
+      "songs": [],
+      "price": 12.99,
+      "singers": []
+    },
+    {
+      "id": 2,
+      "name": "Bollywood Top 2023",
+      "songs": [],
+      "price": 12.99,
+      "singers": []
+    }
+  ],
+  "latest-albums": [
+    {
+      "id": 3,
+      "name": "Bollywood Top 2022",
+      "songs": [],
+      "price": 12.99,
+      "singers": []
+    },
+    {
+      "id": 4,
+      "name": "Bollywood Top 2021",
+      "songs": [],
+      "price": 12.99,
+      "singers": []
+    }
+  ]
+}
