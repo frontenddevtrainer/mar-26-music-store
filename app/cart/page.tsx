@@ -1,9 +1,37 @@
-"use client"
+"use client";
 
 import { useCart } from "@/components/context/cart";
 
 const CartPage = () => {
   const { items } = useCart();
+
+  const totalPrice = items.reduce((accu, curr) => {
+    return accu + curr.price;
+  }, 0);
+
+  const tax = (totalPrice / 100) * 15;
+
+  const grandTotal = totalPrice + tax;
+
+  const doCheckout = async () => {
+    const response = await fetch("http://localhost:4000/orders", {
+      method: "POST",
+      headers: {
+        "content-type" : "application/json"
+      },
+      body: JSON.stringify({
+        items,
+        totalPrice,
+        tax,
+        grandTotal,
+        user: "praveen@example.com",
+      }),
+    });
+
+    const json = await response.json();
+
+    alert("Order placed");
+  };
 
   return (
     <>
@@ -57,20 +85,23 @@ const CartPage = () => {
         <h2 className="text-2xl font-bold">Summary</h2>
         <div className="flex justify-between items-center">
           <span>Total</span>
-          <span>$100</span>
+          <span>${totalPrice.toFixed(2)}</span>
         </div>
         <div className="flex justify-between items-center">
           <span>Taxes</span>
-          <span>$20</span>
+          <span>${tax.toFixed(2)}</span>
         </div>
         <div className="flex justify-between items-center text-2xl font-bold">
           <span>Grand Total</span>
-          <span>$120</span>
+          <span>${grandTotal.toFixed(2)}</span>
         </div>
       </div>
 
       <div className="mt-6">
-        <button className="bg-green-400 text-white px-8 py-3 rounded hover:bg-green-300 w-full">
+        <button
+          onClick={doCheckout}
+          className="bg-green-400 text-white px-8 py-3 rounded hover:bg-green-300 w-full"
+        >
           Checkout
         </button>
       </div>
