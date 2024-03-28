@@ -4,11 +4,7 @@ import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { CartProvider } from "@/components/context/cart";
-import { UserProvider } from "@/components/context/user";
 const inter = Inter({ subsets: ["latin"] });
-import { cookies } from "next/headers";
-
-console.log(UserProvider);
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,33 +16,33 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  console.log(cookies().get("token")?.value, "json");
-  let json = {};
-  try {
+  // console.log(cookies().get("token")?.value, "json");
+  // let json = {};
+  // try {
 
-    const cookie = cookies().get("token")?.value
+  //   const cookie = cookies().get("token")?.value
 
-    const response = await fetch("http://localhost:3000/api/whoami", {
-      method: "POST",
-      headers: {
-        "Cookie": `token=${cookie}`,
-      },
-    });
+  //   const response = await fetch("http://localhost:3000/api/whoami", {
+  //     method: "POST",
+  //     headers: {
+  //       "Cookie": `token=${cookie}`,
+  //     },
+  //   });
 
-    console.log(response)
-    // json = await response.json();
-  } catch (error) {}
+  //   console.log(response)
+  //   // json = await response.json();
+  // } catch (error) {}
 
   return (
     <html lang="en">
       <body className={inter.className}>
-        <UserProvider value={{ user: json }}>
+        {/* <UserProvider value={{ user: json }}> */}
           <CartProvider>
             <Header />
             <main className="container mx-auto p-8"> {children}</main>
             <Footer />
           </CartProvider>
-        </UserProvider>
+        {/* </UserProvider> */}
       </body>
     </html>
   );
