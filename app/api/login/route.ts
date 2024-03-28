@@ -15,8 +15,6 @@ export async function POST(req: NextRequest) {
         const user  = await UserModel.findOne({ email });
         const { password : hashedPassword, _id } = user
 
-        console.log(user, "user")
-
         if (password && hashedPassword && bcryptjs.compareSync(password, hashedPassword)) {
 
 
