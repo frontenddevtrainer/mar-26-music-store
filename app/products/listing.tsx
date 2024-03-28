@@ -13,16 +13,19 @@ const ProductListing = ({
   const [searchText, setSearchText] = useState("");
   const [totalItems, setTotalItem] = useState(total);
   const [selectedPage, setSelectedPage] = useState(1);
-
-  const totalPages = Math.ceil(totalItems / 50);
+  const [totalPages, setTotalPages] = useState(Math.ceil(totalItems / 50));
 
   useEffect(() => {
     const getProducts = async (searchText: string) => {
-      const url = `http://localhost:3000/api/search?${searchText !== "" ? `query=${searchText}` : ""}&${selectedPage !== 1 ? `page=${selectedPage}` : ""}`;
+      const url = `http://localhost:3000/api/search?${
+        searchText !== "" ? `query=${searchText}` : ""
+      }&${selectedPage !== 1 ? `page=${selectedPage}` : ""}`;
 
-      const response = await fetch(url, );
+      const response = await fetch(url);
       const { products, total } = await response.json();
+      setTotalItem(total);
       setItems(products);
+      setTotalPages(Math.ceil(total / 50))
     };
 
     getProducts(searchText);

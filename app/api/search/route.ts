@@ -15,7 +15,7 @@ export async function GET(request: NextRequest, {}) {
   if (query) {
     searchQuery = { $text: { $search: query } };
   }
-  const total = await ProductsModel.countDocuments({});
+  const total = await ProductsModel.countDocuments(searchQuery);
   const docs = await ProductsModel.find(searchQuery).skip(skip).limit(limit);
 
   return Response.json({ total: total, products: docs });
